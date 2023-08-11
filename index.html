@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title>Travel Agency</title>
+    <title>Travel Agency | Challenge</title>
   </head>
   <body>
     <!-- Header -->
@@ -18,7 +18,15 @@
           <li><a href="#">Your Orders</a></li>
           <li><a href="#" class="btn">Get Started</a></li>
         </ul>
-      </nav>
+        <div class="toggle-content">
+
+        
+    <div  class="toggle">
+        <div class="bars" id="bar1"></div>
+        <div class="bars" id="bar2"></div>
+        <div class="bars" id="bar3"></div>
+    </div>
+    </div>
     </header>
 
     <!-- Main -->
@@ -82,6 +90,7 @@
               </div>
             </form>
           </div>
+          <!-- <img src="./images/traveler.png" alt="" class="bg-traveler" /> -->
         </div>
       </section>
       <section class="services">
@@ -166,14 +175,16 @@ m36 -7 c0 -13 -12 -22 -22 -16 -10 6 -1 24 13 24 5 0 9 -4 9 -8z"
         </div>
       </section>
     </main>
-    <div class="custom-cursor"></div>
+    
 
     <script>
-      const customCursor = document.querySelector(".custom-cursor");
-      window.addEventListener("mousemove", function (e) {
-        customCursor.style.left = e.x + "px";
-        customCursor.style.top = e.y + "px";
-      });
+      const toggle = document.querySelector(".toggle")
+      const menu = document.querySelector('.menu')
+      
+      toggle.addEventListener('click', function (e) {
+        toggle.classList.toggle('active');
+        menu.classList.toggle('active');
+      })
     </script>
   </body>
 </html>

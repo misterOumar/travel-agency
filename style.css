@@ -18,6 +18,7 @@
 
 body {
   font-family: "Roboto", Arial, Helvetica, sans-serif;
+  cursor: url(./images/avion-en-papier.svg), auto;
 }
 a {
   text-decoration: none;
@@ -31,6 +32,7 @@ header {
 header nav {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 #logo {
@@ -40,8 +42,9 @@ header nav {
 
 .menu {
   list-style: none;
-  margin-left: auto;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   gap: 2rem;
 }
 
@@ -62,6 +65,66 @@ header nav {
   padding: 1rem 2rem;
 }
 
+.toggle-content {
+  display: none;
+}
+
+.toggle {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition-duration: 0.5s;
+}
+
+.bars {
+  width: 100%;
+  height: 4px;
+  background-color: #ff7b37;
+  border-radius: 4px;
+}
+
+#bar2 {
+  transition-duration: 0.8s;
+}
+
+#bar1,
+#bar3 {
+  width: 70%;
+}
+
+.toggle.active .bars {
+  position: absolute;
+  transition-duration: 0.5s;
+}
+
+.toggle.active #bar2 {
+  transform: scaleX(0);
+  transition-duration: 0.5s;
+}
+
+.toggle.active #bar1 {
+  width: 100%;
+  transform: rotate(45deg);
+  transition-duration: 0.5s;
+}
+
+.toggle.active #bar3 {
+  width: 100%;
+  transform: rotate(-45deg);
+  transition-duration: 0.5s;
+}
+
+.toggle.active {
+  transition-duration: 0.5s;
+  transform: rotate(180deg);
+}
+
 /* main section */
 section {
   padding: 2rem 6rem;
@@ -71,8 +134,19 @@ section {
   background: #7bc678;
   border-radius: 2rem;
   padding: 6rem 4rem 4rem 2rem;
-  /* background-image: url("./images/traveler.png"); */
+  position: relative;
+  z-index: 1;
+  /* background-image: url("./images/traveler.png") no-repeat center / cover; */
 }
+
+/* .main-section .content .bg-traveler {
+  position: absolute;
+  top: 0;
+  right: 4rem;
+  width: 25rem;
+  height: 100%;
+  z-index: -1;
+} */
 
 .main-section .content h1 {
   color: #fff;
@@ -180,34 +254,9 @@ form button:hover {
   background-color: #00000050;
 }
 
-.custom-cursor {
-  position: absolute;
-  width: 3rem;
-  height: 3rem;
-  border: 1px dashed crimson;
-  border-radius: 50%;
-  transition: 0.1s;
-  box-shadow: 50 25px 25px rgba(12, 11, 11, 0.322);
-  left: 50%;
-  right: 50%;
-  transform: translate(-50%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 0;
-}
 
-.custom-cursor::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  right: 50%;
-  transform: translate(-50%);
-  width: 5px;
-  height: 5px;
-  background: crimson;
-  border-radius: 50%;
-}
+
+
 
 .services {
   display: flex;
@@ -293,4 +342,96 @@ form button:hover {
   color: #0000009a;
   font-weight: 400;
   font-size: 0.8rem;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  section {
+    padding: 1rem;
+  }
+  header {
+    padding: 1rem;
+    z-index: 0;
+  }
+
+  .toggle-content {
+    display: block;
+  }
+  .menu {
+    position: absolute;
+    top: 4rem;
+    left: 0;
+    width: 100%;
+    height: 17rem;
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(50px);
+    z-index: 3;
+    flex-direction: column;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    transform: translateX(-100%);
+    transition: transform 0.6s;
+  }
+
+  .menu.active {
+    transform: translateX(0);
+  }
+
+  .menu li a,
+  .menu li a:not(.btn) {
+    display: block;
+    text-align: center;
+  }
+
+  .main-section .content {
+    padding: 2rem 1rem;
+  }
+
+  .main-section .content h1 {
+    font-size: 2.5rem;
+  }
+
+  .main-section .content h4 {
+    font-size: 1rem;
+  }
+
+  .form-arnb span:first-child {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+  }
+
+  .global-form {
+    flex-direction: column;
+    max-width: 100%;
+    align-items: flex-start;
+  }
+
+  .divider {
+    width: 100%;
+    height: 1px;
+  }
+
+  form button {
+    padding: 1rem 4rem;
+    margin-top: 1rem;
+  }
+
+  .services {
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .flight-box {
+    margin-right: 0;
+  }
+
+  .services .service {
+    max-width: 100%;
+    flex-direction: row;
+  }
+  .service .description {
+    gap: 0;
+  }
 }
